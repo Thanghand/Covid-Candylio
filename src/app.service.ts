@@ -15,14 +15,32 @@ export class AppService {
   createCustomerInformation(request: any): string {
     try {
       // Validation
+      const { firstName, lastName, company, businessEmail } = request;
+
+      if (!firstName || firstName === '') {
+        throw new BadRequestException('Missing firstName');
+      }
+
+      if (!lastName || lastName === '') {
+        throw new BadRequestException('Missing lastName');
+      }
+
+      if (!company || company === '') {
+        throw new BadRequestException('Missing company');
+      }
+
+      if (!businessEmail || businessEmail === '') {
+        throw new BadRequestException('Missing businessEmail');
+      }
+
       const data = fs.readFileSync('customers.json', 'utf8');
       const customers = JSON.parse(data) as any[];
 
       const customer = {
-        firstName: request.firstName,
-        lastName: request.lastName,
-        company: request.company,
-        businessEmail: request.businessEmail
+        firstName: firstName,
+        lastName: lastName,
+        company: company,
+        businessEmail: businessEmail
       };
 
       customers.push(customer);

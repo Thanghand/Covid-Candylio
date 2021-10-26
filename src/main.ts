@@ -6,7 +6,6 @@ async function bootstrap() {
     cors: true
   });
   app.setGlobalPrefix('api');
-  await app.listen(3000);
-  console.log(`Application is running on: ${await app.getUrl()}`);
+  await app.listen(80);
 }
 bootstrap();
