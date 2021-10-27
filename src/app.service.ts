@@ -49,7 +49,7 @@ export class AppService {
       return 'Create customer successfully';
     } catch (error) {
       console.error(error);
-      throw new BadRequestException(error);
+      throw error;
     }
   }
 }
